@@ -41,6 +41,9 @@
  * combinations could be one inVec and three outVec, two of each, or three inVec and one outVec.
  * Unused vectors should be set to NULL.
  *
+ * \note It is possible to completely disable the SRF by adding a define for CY_SRF_DISABLE
+ * in the cases where the SRF library is included as a default dependency but not used.
+ *
  ********************************************************************************
  * \section group_mtb_srf_prerequisites  Prerequisites
  ********************************************************************************
@@ -293,6 +296,32 @@ cy_rslt_t mtb_srf_request_execute(mtb_srf_context_s_t* context_s,
  *
  * @return true if it is ns acccsible, false otherwise */
 bool mtb_srf_is_memory_ns_accessible(uint32_t addr, size_t size);
+
+
+/** Copy the operation defined structure value to input_values and validate the structure size
+ * If size, which is defined in secure-side, is not eqaul to size of the input_values array,
+ * it returns MTB_SRF_ERR_BAD_PARAM.
+ *
+ * @param[out]    input         Point to operation defined structure
+ * @param[in]     size          The size of input to be copied and checked
+ * @param[in]     inputs_ns     Struct describing the operation and containing non-pointer
+                                input arguments
+ *
+ * @return the status of execution */
+cy_rslt_t mtb_srf_copy_input_value(void* input, size_t size, mtb_srf_input_ns_t* inputs_ns);
+
+
+/** Copy the operation defined structure value to input_values and validate the structure size
+ * If size, which is defined in secure-side, is not eqaul to size of the output_values array,
+ * it returns MTB_SRF_ERR_BAD_PARAM.
+ *
+ * @param[out]     outputs_ns    Struct containing the non-pointer output arguments
+ * @param[in]      output        Point to operation defined structure
+ * @param[in]      size          The size of output to be copied and checked
+ *
+ * @return the status of execution */
+cy_rslt_t mtb_srf_copy_output_value(mtb_srf_output_ns_t* outputs_ns, void* output, size_t size);
+
 #endif /* defined(COMPONENT_SECURE_DEVICE) || defined(DOXYGEN) */
 
 /** Submit a request from the non-secure side to the secure

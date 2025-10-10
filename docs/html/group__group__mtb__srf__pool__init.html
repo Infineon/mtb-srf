@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>(mtb-srf)</title>
+<title>Secure Request Framework</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><a href="http://www.cypress.com/"><img alt="Logo" src="logo.png"/></a></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">(mtb-srf)</div>
+   <div id="projectname">Secure Request Framework</div>
   </td>
  </tr>
  </tbody>
@@ -138,8 +138,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">        (<a class="code hl_define" href="group__group__mtb__srf__pool.html#ga6a987874362ead4d1391500887655e6c">MTB_SRF_ROUND_UP</a>(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="group__group__mtb__srf__structures.html#structmtb__srf__input__ns__t">mtb_srf_input_ns_t</a>), <a class="code hl_define" href="group__group__mtb__srf__pool.html#ga5df41c2a4b1880bd4a38e93517957cb5">MTB_SRF_POOL_ALIGNMENT</a>) + <a class="code hl_define" href="group__group__mtb__srf__pool.html#ga6a987874362ead4d1391500887655e6c">MTB_SRF_ROUND_UP</a>(input_values_length, <a class="code hl_define" href="group__group__mtb__srf__pool.html#ga5df41c2a4b1880bd4a38e93517957cb5">MTB_SRF_POOL_ALIGNMENT</a>) + \</div>
-<div class="line">        MTB_SRF_ROUND_UP(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="group__group__mtb__srf__structures.html#structmtb__srf__output__ns__t">mtb_srf_output_ns_t</a>), <a class="code hl_define" href="group__group__mtb__srf__pool.html#ga5df41c2a4b1880bd4a38e93517957cb5">MTB_SRF_POOL_ALIGNMENT</a>) + <a class="code hl_define" href="group__group__mtb__srf__pool.html#ga6a987874362ead4d1391500887655e6c">MTB_SRF_ROUND_UP</a>(output_values_length, <a class="code hl_define" href="group__group__mtb__srf__pool.html#ga5df41c2a4b1880bd4a38e93517957cb5">MTB_SRF_POOL_ALIGNMENT</a>) + \</div>
+<b>Value:</b><div class="fragment"><div class="line">        (<a class="code hl_define" href="group__group__mtb__srf__pool.html#ga6a987874362ead4d1391500887655e6c">MTB_SRF_ROUND_UP</a>(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="group__group__mtb__srf__structures.html#structmtb__srf__input__ns__t">mtb_srf_input_ns_t</a>) + input_values_length, <a class="code hl_define" href="group__group__mtb__srf__pool.html#ga5df41c2a4b1880bd4a38e93517957cb5">MTB_SRF_POOL_ALIGNMENT</a>) + \</div>
+<div class="line">        MTB_SRF_ROUND_UP(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="group__group__mtb__srf__structures.html#structmtb__srf__output__ns__t">mtb_srf_output_ns_t</a>) + output_values_length, <a class="code hl_define" href="group__group__mtb__srf__pool.html#ga5df41c2a4b1880bd4a38e93517957cb5">MTB_SRF_POOL_ALIGNMENT</a>) + \</div>
 <div class="line">        MTB_SRF_ROUND_UP((<span class="keyword">sizeof</span>(<a class="code hl_struct" href="group__group__mtb__srf__structures.html#structmtb__srf__invec__ns__t">mtb_srf_invec_ns_t</a>) * <a class="code hl_define" href="group__group__mtb__srf__structures.html#gaa8d80a1f52cce2faee7efa5070b68a45">MTB_SRF_MAX_IOVEC</a>), <a class="code hl_define" href="group__group__mtb__srf__pool.html#ga5df41c2a4b1880bd4a38e93517957cb5">MTB_SRF_POOL_ALIGNMENT</a>) + \</div>
 <div class="line">        MTB_SRF_ROUND_UP((<span class="keyword">sizeof</span>(<a class="code hl_struct" href="group__group__mtb__srf__structures.html#structmtb__srf__outvec__ns__t">mtb_srf_outvec_ns_t</a>) * <a class="code hl_define" href="group__group__mtb__srf__structures.html#gaa8d80a1f52cce2faee7efa5070b68a45">MTB_SRF_MAX_IOVEC</a>), <a class="code hl_define" href="group__group__mtb__srf__pool.html#ga5df41c2a4b1880bd4a38e93517957cb5">MTB_SRF_POOL_ALIGNMENT</a>))</div>
 <div class="ttc" id="agroup__group__mtb__srf__pool_html_ga5df41c2a4b1880bd4a38e93517957cb5"><div class="ttname"><a href="group__group__mtb__srf__pool.html#ga5df41c2a4b1880bd4a38e93517957cb5">MTB_SRF_POOL_ALIGNMENT</a></div><div class="ttdeci">#define MTB_SRF_POOL_ALIGNMENT</div><div class="ttdoc">Address alignment value of pool in bytes.</div><div class="ttdef"><b>Definition:</b> mtb_srf_pool.h:114</div></div>
@@ -224,7 +224,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath">
     <ul>
         <li class="footer">
-            Generated for <b>(mtb-srf)</b> by <b>Cypress Semiconductor Corporation</b>.
+            Generated for <b>Secure Request Framework</b> by <b>Cypress Semiconductor Corporation</b>.
             All rights reserved.
         </li>
     </ul>

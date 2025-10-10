@@ -52,5 +52,7 @@ var group__group__mtb__srf =
     [ "mtb_srf_memory_validate", "group__group__mtb__srf.html#ga54b9444a682587f69ff24e1a5270a29b", null ],
     [ "mtb_srf_request_execute", "group__group__mtb__srf.html#gabbdd2ddb71196608a3e5e5ab3a90c4aa", null ],
     [ "mtb_srf_is_memory_ns_accessible", "group__group__mtb__srf.html#ga7b54ac35f531c989f8343c5e7a0e7423", null ],
+    [ "mtb_srf_copy_input_value", "group__group__mtb__srf.html#ga6118889c5897c88648eac60fb892fba5", null ],
+    [ "mtb_srf_copy_output_value", "group__group__mtb__srf.html#ga00cafd3ac97821870d80f28f93a8aea4", null ],
     [ "mtb_srf_request_submit", "group__group__mtb__srf.html#gab26cb37c7cd980689eb5f49a308b4595", null ]
 ];

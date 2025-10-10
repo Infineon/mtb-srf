@@ -243,7 +243,9 @@ cy_rslt_t mtb_srf_ipc_pool_req_free(mtb_srf_ipc_pool_t* pool, const mtb_srf_ipc_
 cy_rslt_t mtb_srf_ipc_request_send(mtb_srf_ipc_client_context_t* client_context,
                                    mtb_srf_ipc_packet_t* request, uint64_t timeout_us);
 
-#elif !defined(MTB_SRF_SUBMIT_USE_IPC) || defined(DOXYGEN)
+#endif // defined(MTB_SRF_SUBMIT_USE_IPC) || defined(DOXYGEN)
+
+#if !defined(MTB_SRF_SUBMIT_USE_IPC) || defined(DOXYGEN)
 
 /**
  * @brief Receives an SRF request over IPC and adds to either the queue if using an RTOS or the
@@ -280,7 +282,7 @@ cy_rslt_t mtb_srf_ipc_process_pending_request(mtb_srf_ipc_relay_context_t* relay
 cy_rslt_t mtb_srf_ipc_signal_complete(mtb_srf_ipc_relay_context_t* relay_context,
                                       mtb_srf_ipc_packet_t* request);
 
-#endif // defined(MTB_SRF_SUBMIT_USE_IPC)
+#endif // !defined(MTB_SRF_SUBMIT_USE_IPC) || defined(DOXYGEN)
 
 #endif // !defined(COMPONENT_SECURE_DEVICE)
 /** \} group_mtb_srf_ipc */

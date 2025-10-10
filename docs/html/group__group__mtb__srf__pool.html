@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>(mtb-srf)</title>
+<title>Secure Request Framework</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><a href="http://www.cypress.com/"><img alt="Logo" src="logo.png"/></a></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">(mtb-srf)</div>
+   <div id="projectname">Secure Request Framework</div>
   </td>
  </tr>
  </tbody>
@@ -141,7 +141,7 @@ Code Snippets</h1>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="ttc" id="agroup__group__mtb__srf__pool__init_html_ga4656949c083236dd8f93fa2cc347fb97"><div class="ttname"><a href="group__group__mtb__srf__pool__init.html#ga4656949c083236dd8f93fa2cc347fb97">mtb_srf_pool_init</a></div><div class="ttdeci">cy_rslt_t mtb_srf_pool_init(mtb_srf_pool_t *pool, uint32_t *allocated_mem, size_t num_entries, size_t input_len_per_entry, size_t output_len_per_entry)</div><div class="ttdoc">Initializes an secure request pool instance.</div><div class="ttdef"><b>Definition:</b> mtb_srf_pool.c:64</div></div>
+<div class="ttc" id="agroup__group__mtb__srf__pool__init_html_ga4656949c083236dd8f93fa2cc347fb97"><div class="ttname"><a href="group__group__mtb__srf__pool__init.html#ga4656949c083236dd8f93fa2cc347fb97">mtb_srf_pool_init</a></div><div class="ttdeci">cy_rslt_t mtb_srf_pool_init(mtb_srf_pool_t *pool, uint32_t *allocated_mem, size_t num_entries, size_t input_len_per_entry, size_t output_len_per_entry)</div><div class="ttdoc">Initializes an secure request pool instance.</div><div class="ttdef"><b>Definition:</b> mtb_srf_pool.c:65</div></div>
 <div class="ttc" id="agroup__group__mtb__srf__pool__init_html_ga4cbdbc032d8d67f0ddf312c108b5a013"><div class="ttname"><a href="group__group__mtb__srf__pool__init.html#ga4cbdbc032d8d67f0ddf312c108b5a013">MTB_SRF_POOL_ENTRY_SIZE</a></div><div class="ttdeci">#define MTB_SRF_POOL_ENTRY_SIZE(input_values_length, output_values_length)</div><div class="ttdoc">A tool to calculate how much memory to provide for a pool.</div><div class="ttdef"><b>Definition:</b> mtb_srf_pool_init.h:63</div></div>
 </div><!-- fragment --><p >Allocation/Free operation </p><div class="fragment"><div class="line">cy_rslt_t snippet_mtb_srf_pool_allocate_free_api(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
@@ -174,8 +174,8 @@ Code Snippets</h1>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="ttc" id="agroup__group__mtb__srf__pool_html_ga4b50f4d61fcf862d51dbeee70f46bac6"><div class="ttname"><a href="group__group__mtb__srf__pool.html#ga4b50f4d61fcf862d51dbeee70f46bac6">mtb_srf_pool_allocate</a></div><div class="ttdeci">cy_rslt_t mtb_srf_pool_allocate(mtb_srf_pool_t *pool, mtb_srf_invec_ns_t **inVec, mtb_srf_outvec_ns_t **outVec, uint32_t timeout_us)</div><div class="ttdoc">Allocate secure request object within an secure request pool.</div><div class="ttdef"><b>Definition:</b> mtb_srf_pool.c:95</div></div>
-<div class="ttc" id="agroup__group__mtb__srf__pool_html_gad62a0344db708f9f44881b878df618b5"><div class="ttname"><a href="group__group__mtb__srf__pool.html#gad62a0344db708f9f44881b878df618b5">mtb_srf_pool_free</a></div><div class="ttdeci">cy_rslt_t mtb_srf_pool_free(mtb_srf_pool_t *pool, const mtb_srf_invec_ns_t *inVec, const mtb_srf_outvec_ns_t *outVec)</div><div class="ttdoc">Free secure request object within an secure request pool.</div><div class="ttdef"><b>Definition:</b> mtb_srf_pool.c:168</div></div>
+<div class="ttc" id="agroup__group__mtb__srf__pool_html_ga4b50f4d61fcf862d51dbeee70f46bac6"><div class="ttname"><a href="group__group__mtb__srf__pool.html#ga4b50f4d61fcf862d51dbeee70f46bac6">mtb_srf_pool_allocate</a></div><div class="ttdeci">cy_rslt_t mtb_srf_pool_allocate(mtb_srf_pool_t *pool, mtb_srf_invec_ns_t **inVec, mtb_srf_outvec_ns_t **outVec, uint32_t timeout_us)</div><div class="ttdoc">Allocate secure request object within an secure request pool.</div><div class="ttdef"><b>Definition:</b> mtb_srf_pool.c:96</div></div>
+<div class="ttc" id="agroup__group__mtb__srf__pool_html_gad62a0344db708f9f44881b878df618b5"><div class="ttname"><a href="group__group__mtb__srf__pool.html#gad62a0344db708f9f44881b878df618b5">mtb_srf_pool_free</a></div><div class="ttdeci">cy_rslt_t mtb_srf_pool_free(mtb_srf_pool_t *pool, const mtb_srf_invec_ns_t *inVec, const mtb_srf_outvec_ns_t *outVec)</div><div class="ttdoc">Free secure request object within an secure request pool.</div><div class="ttdef"><b>Definition:</b> mtb_srf_pool.c:169</div></div>
 <div class="ttc" id="agroup__group__mtb__srf__structures_html_structmtb__srf__invec__ns__t"><div class="ttname"><a href="group__group__mtb__srf__structures.html#structmtb__srf__invec__ns__t">mtb_srf_invec_ns_t</a></div><div class="ttdoc">An input vector - a section of memory to be used along with the length.</div><div class="ttdef"><b>Definition:</b> mtb_srf_iovec.h:64</div></div>
 <div class="ttc" id="agroup__group__mtb__srf__structures_html_structmtb__srf__outvec__ns__t"><div class="ttname"><a href="group__group__mtb__srf__structures.html#structmtb__srf__outvec__ns__t">mtb_srf_outvec_ns_t</a></div><div class="ttdoc">An output vector - a section of memory to be used along with the length.</div><div class="ttdef"><b>Definition:</b> mtb_srf_iovec.h:71</div></div>
 <div class="ttc" id="agroup__group__mtb__srf_html_gab26cb37c7cd980689eb5f49a308b4595"><div class="ttname"><a href="group__group__mtb__srf.html#gab26cb37c7cd980689eb5f49a308b4595">mtb_srf_request_submit</a></div><div class="ttdeci">cy_rslt_t mtb_srf_request_submit(mtb_srf_invec_ns_t *inVec_ns, uint8_t inVec_cnt_ns, mtb_srf_outvec_ns_t *outVec_ns, uint8_t outVec_cnt_ns)</div><div class="ttdoc">Submit a request from the non-secure side to the secure.</div></div>
@@ -355,7 +355,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath">
     <ul>
         <li class="footer">
-            Generated for <b>(mtb-srf)</b> by <b>Cypress Semiconductor Corporation</b>.
+            Generated for <b>Secure Request Framework</b> by <b>Cypress Semiconductor Corporation</b>.
             All rights reserved.
         </li>
     </ul>

@@ -36,6 +36,7 @@ extern "C"
 {
 #endif /* defined(__cplusplus) */
 
+#if !defined(CY_SRF_DISABLE)
 /*******************************************************************************
 *                           Private Defines
 *******************************************************************************/
@@ -164,6 +165,33 @@ cy_rslt_t _mtb_srf_check_permissions(mtb_srf_op_s_t* op, mtb_srf_request_ns_t* r
 *******************************************************************************/
 
 #if defined(COMPONENT_SECURE_DEVICE)
+cy_rslt_t mtb_srf_copy_input_value(void* input, size_t size, mtb_srf_input_ns_t* inputs_ns)
+{
+    if (inputs_ns->len != size)
+    {
+        return MTB_SRF_ERR_BAD_PARAM;
+    }
+
+    memcpy(input, inputs_ns->input_values, size);
+    return CY_RSLT_SUCCESS;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// mtb_srf_copy_output_value
+//--------------------------------------------------------------------------------------------------
+cy_rslt_t mtb_srf_copy_output_value(mtb_srf_output_ns_t* outputs_ns, void* output, size_t size)
+{
+    if (outputs_ns->len != size)
+    {
+        return MTB_SRF_ERR_BAD_PARAM;
+    }
+
+    memcpy(outputs_ns->output_values, output, size);
+    return CY_RSLT_SUCCESS;
+}
+
+
 //--------------------------------------------------------------------------------------------------
 // mtb_srf_is_memory_ns_accessible
 //--------------------------------------------------------------------------------------------------
@@ -532,6 +560,8 @@ cy_rslt_t mtb_srf_request_execute(mtb_srf_context_s_t* context_s,
 
 
 #endif /* defined(COMPONENT_SECURE_DEVICE) */
+
+#endif /* !defined(CY_SRF_DISABLE) */
 
 #if defined(__cplusplus)
 }

@@ -61,8 +61,8 @@ extern "C" {
 
 /** A tool to calculate how much memory to provide for a pool */
 #define MTB_SRF_POOL_ENTRY_SIZE(input_values_length, output_values_length) \
-        (MTB_SRF_ROUND_UP(sizeof(mtb_srf_input_ns_t), MTB_SRF_POOL_ALIGNMENT) + MTB_SRF_ROUND_UP(input_values_length, MTB_SRF_POOL_ALIGNMENT) + \
-        MTB_SRF_ROUND_UP(sizeof(mtb_srf_output_ns_t), MTB_SRF_POOL_ALIGNMENT) + MTB_SRF_ROUND_UP(output_values_length, MTB_SRF_POOL_ALIGNMENT) + \
+        (MTB_SRF_ROUND_UP(sizeof(mtb_srf_input_ns_t) + input_values_length, MTB_SRF_POOL_ALIGNMENT) + \
+        MTB_SRF_ROUND_UP(sizeof(mtb_srf_output_ns_t) + output_values_length, MTB_SRF_POOL_ALIGNMENT) + \
         MTB_SRF_ROUND_UP((sizeof(mtb_srf_invec_ns_t) * MTB_SRF_MAX_IOVEC), MTB_SRF_POOL_ALIGNMENT) + \
         MTB_SRF_ROUND_UP((sizeof(mtb_srf_outvec_ns_t) * MTB_SRF_MAX_IOVEC), MTB_SRF_POOL_ALIGNMENT))
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>(mtb-srf)</title>
+<title>Secure Request Framework</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><a href="http://www.cypress.com/"><img alt="Logo" src="logo.png"/></a></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">(mtb-srf)</div>
+   <div id="projectname">Secure Request Framework</div>
   </td>
  </tr>
  </tbody>
@@ -97,6 +97,7 @@ $(document).ready(function(){initNavTree('group__group__mtb__srf.html',''); init
 <p >Through the SRF, the secure world exposes one or more operations, which are roughly equivalent to a function. These operations can be combined into a module - a unit of integration between different entities which wish to expose their operations. For example, the Peripheral Driver Library (PDL) would be one module.</p>
 <p >The non-secure world invokes an operation by submitting a secure request via the <a class="el" href="group__group__mtb__srf.html#gab26cb37c7cd980689eb5f49a308b4595">mtb_srf_request_submit</a> API. This request is then passed to the secure world, where its memory addresses are validated, as are the permissions required to perform the operation. A default validation strategy is performed through <a class="el" href="group__group__mtb__srf.html#ga54b9444a682587f69ff24e1a5270a29b">mtb_srf_memory_validate</a>, and further operation specific validation should be done inside the operation itself. The default <a class="el" href="group__group__mtb__srf.html#ga54b9444a682587f69ff24e1a5270a29b">mtb_srf_memory_validate</a> API checks that all memory passed in is accessible to the NS side, ensured the minimum number of inVec and outVec are present, and that a legal number of ioVec (input-output vectors) have been provided (discussed further below). This API is defined weakly to enable overriding with a custom implementation.</p>
 <p >The <a class="el" href="group__group__mtb__srf.html#gab26cb37c7cd980689eb5f49a308b4595">mtb_srf_request_submit</a> API accepts inVec and outVec arrays. The max total number of vectors cannot exceed <a class="el" href="group__group__mtb__srf__structures.html#gaa8d80a1f52cce2faee7efa5070b68a45" title="Max number of vectors that can be provided to mtb_srf_request_submit.">MTB_SRF_MAX_IOVEC</a>. That is, should the max ioVec be 4, legal combinations could be one inVec and three outVec, two of each, or three inVec and one outVec. Unused vectors should be set to NULL.</p>
+<dl class="section note"><dt>Note</dt><dd>It is possible to completely disable the SRF by adding a define for CY_SRF_DISABLE in the cases where the SRF library is included as a default dependency but not used.</dd></dl>
 <h1><a class="anchor" id="group_mtb_srf_prerequisites"></a>
 Prerequisites</h1>
 <p >This framework requires the user manage a mtb_srf_config.h file that contains macros for the various modules that use the SRF. The file comes with the default macros for user and PDL module IDs. Should a library be added to the project that uses SRF, that library should generate a relevant error message requesting that its module ID is added to the mtb_srf_config.h file. The exact values of the module IDs do not matter, as long as they are unique and unsigned integers. The number of SRF modules should be defined as MTB_SRF_MODULE_COUNT. The SRF uses this macro internally to determine how many module IDs exist in a given project.</p>
@@ -229,14 +230,14 @@ Code Snippets</h1>
 <div class="ttc" id="agroup__group__mtb__srf__structures_html_structmtb__srf__invec__ns__t"><div class="ttname"><a href="group__group__mtb__srf__structures.html#structmtb__srf__invec__ns__t">mtb_srf_invec_ns_t</a></div><div class="ttdoc">An input vector - a section of memory to be used along with the length.</div><div class="ttdef"><b>Definition:</b> mtb_srf_iovec.h:64</div></div>
 <div class="ttc" id="agroup__group__mtb__srf__structures_html_structmtb__srf__output__ns__t"><div class="ttname"><a href="group__group__mtb__srf__structures.html#structmtb__srf__output__ns__t">mtb_srf_output_ns_t</a></div><div class="ttdoc">An input structure.</div><div class="ttdef"><b>Definition:</b> mtb_srf_iovec.h:96</div></div>
 <div class="ttc" id="agroup__group__mtb__srf__structures_html_structmtb__srf__outvec__ns__t"><div class="ttname"><a href="group__group__mtb__srf__structures.html#structmtb__srf__outvec__ns__t">mtb_srf_outvec_ns_t</a></div><div class="ttdoc">An output vector - a section of memory to be used along with the length.</div><div class="ttdef"><b>Definition:</b> mtb_srf_iovec.h:71</div></div>
-<div class="ttc" id="agroup__group__mtb__srf_html_ada70e24aba9a5015e07c0981e4885bc2"><div class="ttname"><a href="group__group__mtb__srf.html#ada70e24aba9a5015e07c0981e4885bc2">mtb_srf_permission_s_t::base</a></div><div class="ttdeci">void * base</div><div class="ttdoc">Register base address for the hardware resource. If not applicable, set to NULL.</div><div class="ttdef"><b>Definition:</b> mtb_srf.h:150</div></div>
-<div class="ttc" id="agroup__group__mtb__srf_html_aed9ed18ec69f8d2d4f345f1cebfb22cf"><div class="ttname"><a href="group__group__mtb__srf.html#aed9ed18ec69f8d2d4f345f1cebfb22cf">mtb_srf_op_s_t::module_id</a></div><div class="ttdeci">uint8_t module_id</div><div class="ttdoc">Module ID for this operation. Must be unique within this operation.</div><div class="ttdef"><b>Definition:</b> mtb_srf.h:163</div></div>
-<div class="ttc" id="agroup__group__mtb__srf_html_af264a9772e72c929128aa0cee248db05"><div class="ttname"><a href="group__group__mtb__srf.html#af264a9772e72c929128aa0cee248db05">mtb_srf_module_s_t::module_id</a></div><div class="ttdeci">uint8_t module_id</div><div class="ttdoc">ID for this module. Must be globally unique.</div><div class="ttdef"><b>Definition:</b> mtb_srf.h:203</div></div>
+<div class="ttc" id="agroup__group__mtb__srf_html_ada70e24aba9a5015e07c0981e4885bc2"><div class="ttname"><a href="group__group__mtb__srf.html#ada70e24aba9a5015e07c0981e4885bc2">mtb_srf_permission_s_t::base</a></div><div class="ttdeci">void * base</div><div class="ttdoc">Register base address for the hardware resource. If not applicable, set to NULL.</div><div class="ttdef"><b>Definition:</b> mtb_srf.h:153</div></div>
+<div class="ttc" id="agroup__group__mtb__srf_html_aed9ed18ec69f8d2d4f345f1cebfb22cf"><div class="ttname"><a href="group__group__mtb__srf.html#aed9ed18ec69f8d2d4f345f1cebfb22cf">mtb_srf_op_s_t::module_id</a></div><div class="ttdeci">uint8_t module_id</div><div class="ttdoc">Module ID for this operation. Must be unique within this operation.</div><div class="ttdef"><b>Definition:</b> mtb_srf.h:166</div></div>
+<div class="ttc" id="agroup__group__mtb__srf_html_af264a9772e72c929128aa0cee248db05"><div class="ttname"><a href="group__group__mtb__srf.html#af264a9772e72c929128aa0cee248db05">mtb_srf_module_s_t::module_id</a></div><div class="ttdeci">uint8_t module_id</div><div class="ttdoc">ID for this module. Must be globally unique.</div><div class="ttdef"><b>Definition:</b> mtb_srf.h:206</div></div>
 <div class="ttc" id="agroup__group__mtb__srf_html_ga1252919631d2e4ae82450c55ea45149c"><div class="ttname"><a href="group__group__mtb__srf.html#ga1252919631d2e4ae82450c55ea45149c">mtb_srf_init</a></div><div class="ttdeci">cy_rslt_t mtb_srf_init(mtb_srf_context_s_t *context_s)</div><div class="ttdoc">Initialize the SRF.</div></div>
 <div class="ttc" id="agroup__group__mtb__srf_html_gab1995456d142995822b5107d052291e4"><div class="ttname"><a href="group__group__mtb__srf.html#gab1995456d142995822b5107d052291e4">mtb_srf_module_register</a></div><div class="ttdeci">cy_rslt_t mtb_srf_module_register(mtb_srf_context_s_t *context_s, mtb_srf_module_s_t *module_s)</div><div class="ttdoc">Register a module for use.</div></div>
-<div class="ttc" id="agroup__group__mtb__srf_html_structmtb__srf__module__s__t"><div class="ttname"><a href="group__group__mtb__srf.html#structmtb__srf__module__s__t">mtb_srf_module_s_t</a></div><div class="ttdoc">Module structure.</div><div class="ttdef"><b>Definition:</b> mtb_srf.h:202</div></div>
-<div class="ttc" id="agroup__group__mtb__srf_html_structmtb__srf__op__s__t"><div class="ttname"><a href="group__group__mtb__srf.html#structmtb__srf__op__s__t">mtb_srf_op_s_t</a></div><div class="ttdoc">Operation description structure.</div><div class="ttdef"><b>Definition:</b> mtb_srf.h:162</div></div>
-<div class="ttc" id="agroup__group__mtb__srf_html_structmtb__srf__permission__s__t"><div class="ttname"><a href="group__group__mtb__srf.html#structmtb__srf__permission__s__t">mtb_srf_permission_s_t</a></div><div class="ttdoc">Permission structure.</div><div class="ttdef"><b>Definition:</b> mtb_srf.h:149</div></div>
+<div class="ttc" id="agroup__group__mtb__srf_html_structmtb__srf__module__s__t"><div class="ttname"><a href="group__group__mtb__srf.html#structmtb__srf__module__s__t">mtb_srf_module_s_t</a></div><div class="ttdoc">Module structure.</div><div class="ttdef"><b>Definition:</b> mtb_srf.h:205</div></div>
+<div class="ttc" id="agroup__group__mtb__srf_html_structmtb__srf__op__s__t"><div class="ttname"><a href="group__group__mtb__srf.html#structmtb__srf__op__s__t">mtb_srf_op_s_t</a></div><div class="ttdoc">Operation description structure.</div><div class="ttdef"><b>Definition:</b> mtb_srf.h:165</div></div>
+<div class="ttc" id="agroup__group__mtb__srf_html_structmtb__srf__permission__s__t"><div class="ttname"><a href="group__group__mtb__srf.html#structmtb__srf__permission__s__t">mtb_srf_permission_s_t</a></div><div class="ttdoc">Permission structure.</div><div class="ttdef"><b>Definition:</b> mtb_srf.h:152</div></div>
 </div><!-- fragment --><p >Submit request operation </p><div class="fragment"><div class="line"> </div>
 <div class="line"><span class="comment">/* These macros would be declared in mtb_srf_config.h, a file owned by the user */</span></div>
 <div class="line"><span class="preprocessor">#define MTB_SRF_MODULE_PDL_DEMO             (0U)</span></div>
@@ -316,7 +317,7 @@ Code Snippets</h1>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="ttc" id="agroup__group__mtb__srf__pool_html_ga4b50f4d61fcf862d51dbeee70f46bac6"><div class="ttname"><a href="group__group__mtb__srf__pool.html#ga4b50f4d61fcf862d51dbeee70f46bac6">mtb_srf_pool_allocate</a></div><div class="ttdeci">cy_rslt_t mtb_srf_pool_allocate(mtb_srf_pool_t *pool, mtb_srf_invec_ns_t **inVec, mtb_srf_outvec_ns_t **outVec, uint32_t timeout_us)</div><div class="ttdoc">Allocate secure request object within an secure request pool.</div><div class="ttdef"><b>Definition:</b> mtb_srf_pool.c:95</div></div>
+<div class="ttc" id="agroup__group__mtb__srf__pool_html_ga4b50f4d61fcf862d51dbeee70f46bac6"><div class="ttname"><a href="group__group__mtb__srf__pool.html#ga4b50f4d61fcf862d51dbeee70f46bac6">mtb_srf_pool_allocate</a></div><div class="ttdeci">cy_rslt_t mtb_srf_pool_allocate(mtb_srf_pool_t *pool, mtb_srf_invec_ns_t **inVec, mtb_srf_outvec_ns_t **outVec, uint32_t timeout_us)</div><div class="ttdoc">Allocate secure request object within an secure request pool.</div><div class="ttdef"><b>Definition:</b> mtb_srf_pool.c:96</div></div>
 <div class="ttc" id="agroup__group__mtb__srf__structures_html_a1397f007a73a7dcc399fcc909ad668b2"><div class="ttname"><a href="group__group__mtb__srf__structures.html#a1397f007a73a7dcc399fcc909ad668b2">mtb_srf_input_ns_t::len</a></div><div class="ttdeci">size_t len</div><div class="ttdoc">Size of the input_values array.</div><div class="ttdef"><b>Definition:</b> mtb_srf_iovec.h:83</div></div>
 <div class="ttc" id="agroup__group__mtb__srf__structures_html_a167b1b0ca4fc59a836051331bd05391e"><div class="ttname"><a href="group__group__mtb__srf__structures.html#a167b1b0ca4fc59a836051331bd05391e">mtb_srf_request_ns_t::sub_block</a></div><div class="ttdeci">uint32_t sub_block</div><div class="ttdoc">Sub-block index for this operation.</div><div class="ttdef"><b>Definition:</b> mtb_srf_iovec.h:49</div></div>
 <div class="ttc" id="agroup__group__mtb__srf__structures_html_a42ff923937d6d517a80965aa38554be3"><div class="ttname"><a href="group__group__mtb__srf__structures.html#a42ff923937d6d517a80965aa38554be3">mtb_srf_output_ns_t::len</a></div><div class="ttdeci">size_t len</div><div class="ttdoc">Size of the output_values array.</div><div class="ttdef"><b>Definition:</b> mtb_srf_iovec.h:98</div></div>
@@ -417,6 +418,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga7b54ac35f531c989f8343c5e7a0e7423"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__mtb__srf.html#ga7b54ac35f531c989f8343c5e7a0e7423">mtb_srf_is_memory_ns_accessible</a> (uint32_t addr, size_t size)</td></tr>
 <tr class="memdesc:ga7b54ac35f531c989f8343c5e7a0e7423"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an address is non secure accessible.  <a href="group__group__mtb__srf.html#ga7b54ac35f531c989f8343c5e7a0e7423">More...</a><br /></td></tr>
 <tr class="separator:ga7b54ac35f531c989f8343c5e7a0e7423"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6118889c5897c88648eac60fb892fba5"><td class="memItemLeft" align="right" valign="top">cy_rslt_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__mtb__srf.html#ga6118889c5897c88648eac60fb892fba5">mtb_srf_copy_input_value</a> (void *input, size_t size, <a class="el" href="group__group__mtb__srf__structures.html#structmtb__srf__input__ns__t">mtb_srf_input_ns_t</a> *inputs_ns)</td></tr>
+<tr class="memdesc:ga6118889c5897c88648eac60fb892fba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the operation defined structure value to input_values and validate the structure size If size, which is defined in secure-side, is not eqaul to size of the input_values array, it returns MTB_SRF_ERR_BAD_PARAM.  <a href="group__group__mtb__srf.html#ga6118889c5897c88648eac60fb892fba5">More...</a><br /></td></tr>
+<tr class="separator:ga6118889c5897c88648eac60fb892fba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga00cafd3ac97821870d80f28f93a8aea4"><td class="memItemLeft" align="right" valign="top">cy_rslt_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__mtb__srf.html#ga00cafd3ac97821870d80f28f93a8aea4">mtb_srf_copy_output_value</a> (<a class="el" href="group__group__mtb__srf__structures.html#structmtb__srf__output__ns__t">mtb_srf_output_ns_t</a> *outputs_ns, void *output, size_t size)</td></tr>
+<tr class="memdesc:ga00cafd3ac97821870d80f28f93a8aea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the operation defined structure value to input_values and validate the structure size If size, which is defined in secure-side, is not eqaul to size of the output_values array, it returns MTB_SRF_ERR_BAD_PARAM.  <a href="group__group__mtb__srf.html#ga00cafd3ac97821870d80f28f93a8aea4">More...</a><br /></td></tr>
+<tr class="separator:ga00cafd3ac97821870d80f28f93a8aea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab26cb37c7cd980689eb5f49a308b4595"><td class="memItemLeft" align="right" valign="top">cy_rslt_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__mtb__srf.html#gab26cb37c7cd980689eb5f49a308b4595">mtb_srf_request_submit</a> (<a class="el" href="group__group__mtb__srf__structures.html#structmtb__srf__invec__ns__t">mtb_srf_invec_ns_t</a> *inVec_ns, uint8_t inVec_cnt_ns, <a class="el" href="group__group__mtb__srf__structures.html#structmtb__srf__outvec__ns__t">mtb_srf_outvec_ns_t</a> *outVec_ns, uint8_t outVec_cnt_ns)</td></tr>
 <tr class="memdesc:gab26cb37c7cd980689eb5f49a308b4595"><td class="mdescLeft">&#160;</td><td class="mdescRight">Submit a request from the non-secure side to the secure.  <a href="group__group__mtb__srf.html#gab26cb37c7cd980689eb5f49a308b4595">More...</a><br /></td></tr>
 <tr class="separator:gab26cb37c7cd980689eb5f49a308b4595"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -933,6 +940,96 @@ Array size. </td></tr>
 
 </div>
 </div>
+<a id="ga6118889c5897c88648eac60fb892fba5" name="ga6118889c5897c88648eac60fb892fba5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6118889c5897c88648eac60fb892fba5">&#9670;&nbsp;</a></span>mtb_srf_copy_input_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cy_rslt_t mtb_srf_copy_input_value </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__group__mtb__srf__structures.html#structmtb__srf__input__ns__t">mtb_srf_input_ns_t</a> *&#160;</td>
+          <td class="paramname"><em>inputs_ns</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy the operation defined structure value to input_values and validate the structure size If size, which is defined in secure-side, is not eqaul to size of the input_values array, it returns MTB_SRF_ERR_BAD_PARAM. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">input</td><td>Point to operation defined structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>The size of input to be copied and checked </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">inputs_ns</td><td>Struct describing the operation and containing non-pointer input arguments</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the status of execution </dd></dl>
+
+</div>
+</div>
+<a id="ga00cafd3ac97821870d80f28f93a8aea4" name="ga00cafd3ac97821870d80f28f93a8aea4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga00cafd3ac97821870d80f28f93a8aea4">&#9670;&nbsp;</a></span>mtb_srf_copy_output_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cy_rslt_t mtb_srf_copy_output_value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__group__mtb__srf__structures.html#structmtb__srf__output__ns__t">mtb_srf_output_ns_t</a> *&#160;</td>
+          <td class="paramname"><em>outputs_ns</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy the operation defined structure value to input_values and validate the structure size If size, which is defined in secure-side, is not eqaul to size of the output_values array, it returns MTB_SRF_ERR_BAD_PARAM. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">outputs_ns</td><td>Struct containing the non-pointer output arguments </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">output</td><td>Point to operation defined structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>The size of output to be copied and checked</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the status of execution </dd></dl>
+
+</div>
+</div>
 <a id="gab26cb37c7cd980689eb5f49a308b4595" name="gab26cb37c7cd980689eb5f49a308b4595"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gab26cb37c7cd980689eb5f49a308b4595">&#9670;&nbsp;</a></span>mtb_srf_request_submit()</h2>
 
@@ -994,7 +1091,7 @@ Array size. </td></tr>
 <div id="nav-path" class="navpath">
     <ul>
         <li class="footer">
-            Generated for <b>(mtb-srf)</b> by <b>Cypress Semiconductor Corporation</b>.
+            Generated for <b>Secure Request Framework</b> by <b>Cypress Semiconductor Corporation</b>.
             All rights reserved.
         </li>
     </ul>

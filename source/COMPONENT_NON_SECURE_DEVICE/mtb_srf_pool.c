@@ -25,6 +25,7 @@ extern "C"
 {
 #endif /* defined(__cplusplus) */
 
+#if !defined(CY_SRF_DISABLE)
 /*******************************************************************************
 *                           Private Defines
 *******************************************************************************/
@@ -221,6 +222,7 @@ cy_rslt_t mtb_srf_pool_get_entry_len(mtb_srf_pool_t* pool, size_t* input_len_per
 
 CY_MISRA_BLOCK_END('MISRA C-2012 Rule 8.13');
 
+#endif /* !defined(CY_SRF_DISABLE) */
 #if defined(__cplusplus)
 }
 #endif /* defined(__cplusplus) */

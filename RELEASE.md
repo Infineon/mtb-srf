@@ -4,6 +4,8 @@ Please refer to the [README.md](./README.md) and the [API Reference Guide](https
 
 ## Defect Fixes
 
+#### v1.1.1
+* Licensing update
 #### v1.1.0
 * Documentation updates
 * Added option to disable SRF
@@ -34,4 +36,4 @@ For more information, refer to the following documents:
 * [Infineon Technologies AG](https://www.infineon.com)
 
 ---
-© 2025, Cypress Semiconductor Corporation (an Infineon company) or an affiliate of Cypress Semiconductor Corporation.
+© 2026, Infineon Technologies AG, or an affiliate of Infineon Technologies AG.

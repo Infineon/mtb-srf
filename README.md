@@ -37,4 +37,4 @@ For more information, refer to the following documents:
 * [ModusToolbox Software Environment, Quick Start Guide, Documentation, and Videos](https://www.infineon.com/cms/en/design-support/tools/sdk/modustoolbox-software)
 * [Infineon Technologies AG](https://www.infineon.com)
 
-© 2025, Cypress Semiconductor Corporation (an Infineon company) or an affiliate of Cypress Semiconductor Corporation.
+© 2026, Infineon Technologies AG, or an affiliate of Infineon Technologies AG.
